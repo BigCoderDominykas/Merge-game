@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject nextFruit;
+    public float delay;
+    float delayCopy;
+    public Transform preview;
+
     public List<Fruit> fruits;
-    Fruit fruit;
+
+    int fruitIndex;
+    int timesCalled = 0;
+    int prevInd = -1;
+
+    GameObject currentFruit;
+    GameObject nextFruit;
 
     private void Start()
     {
-        fruit = fruits[Random.Range(0, fruits.Count)];
-        Instantiate(fruit.gameObject);
-        fruit.Selected(transform);
-
-        // Pick random next fruit
         UpdatePreview();
+        PickNextFruit();
+        UpdatePreview();
+
+        delayCopy = delay;
     }
 
     private void Update()
@@ -25,22 +33,45 @@ public class Spawner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            fruit.Drop();
-            PickNextFruit();
+            currentFruit.GetComponent<Fruit>().Drop();
+        }
 
+        if (currentFruit == null || currentFruit.transform.parent == null)
+        {
+            delayCopy -= Time.deltaTime;
+
+            if (delayCopy <= 0)
+            {
+                delayCopy = delay;
+                PickNextFruit();
+                UpdatePreview();
+            }
         }
     }
 
     void PickNextFruit()
     {
-        fruit = nextFruit.GetComponentInChildren<Fruit>();
-        nextFruit.transform.DetachChildren();
-        fruit.Selected(transform);
+        currentFruit = nextFruit;
+        currentFruit.GetComponent<Fruit>().Selected(transform, fruitIndex, false);
     }
 
     void UpdatePreview()
     {
-        // Pick random fruit
-        // Instantiate
+        fruitIndex = Random.Range(0, fruits.Count);
+        nextFruit = Instantiate (fruits[fruitIndex].gameObject, preview.position, Quaternion.identity);
+        if (fruitIndex == fruits.Count - 1) fruitIndex = -1;
+    }
+
+    public void SpawnMergedFruit(int ind)
+    {
+        timesCalled++;
+        if (timesCalled == 2)
+        {
+            timesCalled = 0;
+            var mergedFruit = Instantiate(fruits[ind + 1].gameObject, Vector3.zero, Quaternion.identity);
+            mergedFruit.GetComponent<Fruit>().Selected(transform, ind + 1, true);
+            mergedFruit.GetComponent<Fruit>().Drop();
+            return;
+        }
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1486903797164067841}
   m_Layer: 0
   m_Name: Blueberry
-  m_TagString: Untagged
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,4 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce912c13f2e721542b0af2acaa9fe483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scale: 0.5
+  index: 0
   dropped: 0

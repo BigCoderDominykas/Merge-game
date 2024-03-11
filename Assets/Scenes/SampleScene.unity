@@ -798,7 +798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5f5cce4690bef4dabc5f2ea8215db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextFruit: {fileID: 0}
+  delay: 0.7
+  preview: {fileID: 6920530740637709613}
   fruits:
   - {fileID: 1486903797164067841, guid: 1cc414b19416ccc4b82b7b17dc4788a0, type: 3}
   - {fileID: 1486903797164067841, guid: fd11e3de18162f74bbf854f9d978de31, type: 3}
@@ -828,7 +829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6920530740637709613}
   m_Layer: 0
-  m_Name: Next Fruit
+  m_Name: Preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -843,7 +844,7 @@ Transform:
   m_GameObject: {fileID: 5042667352919695457}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 4.5, z: 0}
+  m_LocalPosition: {x: 8.3, y: 4.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
