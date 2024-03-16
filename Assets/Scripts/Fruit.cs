@@ -7,6 +7,7 @@ public class Fruit : MonoBehaviour
     public float scale;
     public int index;
     public bool dropped = false;
+    public bool hasMerged = false;
 
     Spawner spawner;
     Rigidbody2D rb;
@@ -27,6 +28,7 @@ public class Fruit : MonoBehaviour
         transform.SetParent(null);
         //rb.isKinematic = false;
         //rb.gravityScale = 1;
+        rb = GetComponent<Rigidbody2D>();
         rb.simulated = true;
     }
 
@@ -52,10 +54,13 @@ public class Fruit : MonoBehaviour
         if (!collision.gameObject.CompareTag("Fruit")) return;
         if (index == -1) return;
 
-        if (collision.gameObject.GetComponent<Fruit>().index == index)
+        if (!hasMerged && collision.gameObject.GetComponent<Fruit>().index == index)
         {
-            spawner.SpawnMergedFruit(index);
-            //Destroy(gameObject);
+            hasMerged = true;
+            collision.gameObject.GetComponent<Fruit>().hasMerged = true;
+            spawner.SpawnMergedFruit(index, collision.contacts[0].point);
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 }

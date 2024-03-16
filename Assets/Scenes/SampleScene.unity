@@ -801,9 +801,17 @@ MonoBehaviour:
   delay: 0.7
   preview: {fileID: 6920530740637709613}
   fruits:
-  - {fileID: 1486903797164067841, guid: 1cc414b19416ccc4b82b7b17dc4788a0, type: 3}
-  - {fileID: 1486903797164067841, guid: fd11e3de18162f74bbf854f9d978de31, type: 3}
-  - {fileID: 1486903797164067841, guid: 7fff893b57d5cfd4d8fb350acdf7ce99, type: 3}
+  - {fileID: 7578462298765113945, guid: 1cc414b19416ccc4b82b7b17dc4788a0, type: 3}
+  - {fileID: 7578462298765113945, guid: fd11e3de18162f74bbf854f9d978de31, type: 3}
+  - {fileID: 7578462298765113945, guid: 7fff893b57d5cfd4d8fb350acdf7ce99, type: 3}
+  - {fileID: 7578462298765113945, guid: 83aafdb0f31a34f4b988d8a7acfca753, type: 3}
+  - {fileID: 7578462298765113945, guid: afb73fc14358d3142868dc3dcfe3e1b4, type: 3}
+  - {fileID: 7578462298765113945, guid: d74e61b3c1fd0734a8d170a06453ab6b, type: 3}
+  - {fileID: 7578462298765113945, guid: 2198845b81edfa84384a932ba3a3507c, type: 3}
+  - {fileID: 7578462298765113945, guid: cfba8799dec3b3045840ec36b391e64a, type: 3}
+  - {fileID: 7578462298765113945, guid: e58193fb5111719449d274dfc304cec2, type: 3}
+  - {fileID: 7578462298765113945, guid: 8402b4cee9d680945978dfc8646ed8ef, type: 3}
+  - {fileID: 7578462298765113945, guid: 8a4dca38831ae724e9800521a832cade, type: 3}
 --- !u!4 &2026058709
 Transform:
   m_ObjectHideFlags: 0

@@ -8,14 +8,15 @@ public class Spawner : MonoBehaviour
     float delayCopy;
     public Transform preview;
 
-    public List<Fruit> fruits;
+    public List<GameObject> fruits;
 
     int fruitIndex;
-    int timesCalled = 0;
-    int prevInd = -1;
+    //int timesCalled = 0;
+    //int prevInd = -1;
 
     GameObject currentFruit;
     GameObject nextFruit;
+    GameObject mergedFruit;
 
     private void Start()
     {
@@ -58,12 +59,13 @@ public class Spawner : MonoBehaviour
     void UpdatePreview()
     {
         fruitIndex = Random.Range(0, fruits.Count);
-        nextFruit = Instantiate (fruits[fruitIndex].gameObject, preview.position, Quaternion.identity);
+        nextFruit = Instantiate (fruits[fruitIndex], preview.position, Quaternion.identity);
         if (fruitIndex == fruits.Count - 1) fruitIndex = -1;
     }
 
-    public void SpawnMergedFruit(int ind)
+    public void SpawnMergedFruit(int ind, Vector2 point)
     {
+        /*
         timesCalled++;
         if (timesCalled == 2)
         {
@@ -73,5 +75,10 @@ public class Spawner : MonoBehaviour
             mergedFruit.GetComponent<Fruit>().Drop();
             return;
         }
+        */
+        mergedFruit = Instantiate(fruits[ind + 1], point, Quaternion.identity);
+        mergedFruit.GetComponent<Fruit>().Selected(this.transform, ind + 1, true);
+        mergedFruit.GetComponent<Fruit>().Drop();
+        mergedFruit.GetComponent<Rigidbody2D>().simulated = true;
     }
 }
